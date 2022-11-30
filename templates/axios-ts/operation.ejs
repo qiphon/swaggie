@@ -20,7 +20,7 @@ $config?: AxiosRequestConfig
   let backendApiUrl = '<%= it.apiBasePath + it.url %>';
   <% if(it.pathParams && it.pathParams.length > 0) {
   it.pathParams.forEach((parameter) => { %>
-  url = backendApiUrl.replace('{<%= parameter.name %>}', encodeURIComponent("" + <%= parameter.name %>));
+  backendApiUrl = backendApiUrl.replace('{<%= parameter.name %>}', encodeURIComponent("" + <%= parameter.name %>));
   <% });
 } %>
   <% if(it.formData && it.formData.length > 0) { %>
