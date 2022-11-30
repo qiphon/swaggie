@@ -1,13 +1,13 @@
 {
-  "name": "swaggie",
-  "version": "0.7.6",
+  "name": "swaggie-beta",
+  "version": "0.7.7",
   "description": "Generate ES6 or TypeScript service integration code from an OpenAPI spec",
   "author": {
-    "name": "Piotr Dabrowski",
+    "name": "Piotr Dabrowski & qiphon",
     "url": "https://github.com/yhnavein"
   },
   "license": "MIT",
-  "homepage": "https://github.com/yhnavein/swaggie",
+  "homepage": "https://github.com/qiphon/swaggie",
   "repository": {
     "type": "git",
     "url": "https://github.com/yhnavein/swaggie.git"
