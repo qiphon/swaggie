@@ -27,7 +27,7 @@
     "build": "sucrase ./src -d ./dist --transforms typescript,imports && npm run rm-tests && npm run types",
     "rm-tests": "find dist/ -name '*.spec.js' -type f -delete",
     "types": "tsc src/types.ts --outDir dist/ --declaration --emitDeclarationOnly && cp test/index.d.ts ./dist/",
-    "apis": "ts-node ./templates/axios-ts/script.ts",
+    "dev": "ts-node ./src/cli.ts -s https://gold-gateway-dev.carbonstop.net/management/v2/api-docs -o ./client/1.ts -t ./templates/axios-ts",
     "test": "mocha 'src/**/*.spec.ts'"
   },
   "files": [
