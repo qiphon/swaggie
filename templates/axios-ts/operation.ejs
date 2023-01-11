@@ -42,7 +42,12 @@ $config?: AxiosRequestConfig
     <% if(it.formData && it.formData.length > 0) { %>
     data: formDataBody,
     <% } else if(it.body) { %>
-    data: <%= it.body.name %>,
+    data: {
+    <% it.parameters.forEach((parameter) => { %>
+    <%= parameter.name %>,
+    <% }); %>
+    },
+
     <% } %>
     <% if(it.query && it.query.length > 0) { %>
     params: serializeQueryParam({
