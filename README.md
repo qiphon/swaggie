@@ -223,3 +223,9 @@ Quick comparison table:
 | - Easy to contribute to                                         | - Contributing hard                                         |
 | - Lightweight                                                   | - Complicated templates                                     |
 | - Only features generating API clients for TS/JS                | - Many more features (but mostly for .NET apps)             |
+
+### change
+
+- 2023-01-11
+
+  - add md5Name in operations

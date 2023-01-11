@@ -1,5 +1,5 @@
 import { camel } from 'case';
-
+import crypto from 'crypto';
 import { getTSParamType } from './support';
 import {
   groupOperationsByGroupName,
@@ -109,6 +109,11 @@ export function prepareOperations(
         returnType: respType,
         method: op.method.toUpperCase(),
         name: getOperationName(op.id, op.group),
+        // fixme - unique name generate by path
+        md5Name: crypto
+          .createHash('md5')
+          .update(op.path + (op.group || '') + op.method)
+          .digest('hex'),
         url: op.path,
         parameters: params,
         query: queryParams,
