@@ -226,6 +226,10 @@ Quick comparison table:
 
 ### change
 
+- 2023-03-17
+
+  - md5Name 生成规则修改，去除使用 tag name
+
 - 2023-01-11
 
   - add md5Name in operations

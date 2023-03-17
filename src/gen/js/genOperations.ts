@@ -112,7 +112,7 @@ export function prepareOperations(
         // fixme - unique name generate by path
         md5Name: crypto
           .createHash('md5')
-          .update(op.path + (op.group || '') + op.method)
+          .update(op.path + op.method)
           .digest('hex'),
         url: op.path,
         parameters: params,
