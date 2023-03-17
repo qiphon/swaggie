@@ -6,18 +6,23 @@
 
 <% }); -%>
 */
-export const <%= it.md5Name %> = (
+
+export type <%= it.method + it.md5Name +'Props' %> = {
+<% it.parameters.forEach((parameter) => { %>
+<%= parameter.name %><%= parameter.optional ? '?' : '' %>: <%~ parameter.type %> <%= parameter.optional ? '| null | undefined' : '' %>,
+<% }); %>
+}
+
+export const <%= it.method + it.md5Name %> = (
 {
 <% it.parameters.forEach((parameter) => { %>
 <%= parameter.name %>,
 <% }); %>
 }
-:{<% it.parameters.forEach((parameter) => { %>
-<%= parameter.name %>: <%~ parameter.type %> <%= parameter.optional ? '| null | undefined' : '' %>,
-<% }); %>},
+:<%= it.method + it.md5Name +'Props' %>,
 $config?: AxiosRequestConfig
 ): AxiosPromise<<%~ it.returnType %>> => {
-  let backendApiUrl = '<%= it.apiBasePath + it.url %>';
+  let backendApiUrl = `<%= it.apiBasePath + it.url.replaceAll(/(\{[a-zA-Z]+\})/g, '$$$1') %>`
   <% if(it.pathParams && it.pathParams.length > 0) {
   it.pathParams.forEach((parameter) => { %>
   backendApiUrl = backendApiUrl.replace('{<%= parameter.name %>}', encodeURIComponent("" + <%= parameter.name %>));
@@ -43,7 +48,6 @@ $config?: AxiosRequestConfig
     data: formDataBody,
     <% } else if(it.body) { %>
     data: <%= it.body.name %>,
-
     <% } %>
     <% if(it.query && it.query.length > 0) { %>
     params: serializeQueryParam({
@@ -63,7 +67,7 @@ $config?: AxiosRequestConfig
     <% }); %>
     },
     <% } %>
-    WAITING_REPLACED_BASE_URL
+    // WAITING_REPLACED_BASE_URL
     ...$config,
     });
     };
